@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4"> 
+        <label>Styles</label> 
+        <select class="form-control form-control-lg" id="idSty" name="idSty" 
+                [(ngModel)]="idStyle" (change)="onChange()">
+            <option *ngFor="let sty of styles" [value]="sty.idSty">
+                {{sty.nomSty}} 
+            </option>
+        </select> 
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> 
+                        <th>Id</th>
+                        <th>Nom</th> 
+                        <th>Prix</th>  
+                        <th>Date Création</th>
+                        <th>Style</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let produit of produits"> <!-- Changed 'lunette' to 'produit' -->
+                        <td>{{produit.idProduit}}</td> <!-- Updated variable name -->
+                        <td>{{produit.nomProduit}}</td> <!-- Updated variable name -->
+                        <td>{{produit.prixProduit}}</td> <!-- Updated variable name -->
+                        <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td> <!-- Updated variable name -->
+                        <td>{{produit.style?.nomSty}}</td> <!-- Updated variable name -->
+                        <!-- Uncomment these if needed -->
+                        <!-- <td><a class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td> -->
+                        <!-- <td><a class="btn btn-success" [routerLink]="['/updateProduit', produit.idProduit]">Modifier</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

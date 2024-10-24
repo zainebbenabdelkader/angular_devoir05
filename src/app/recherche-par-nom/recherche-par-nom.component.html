@@ -1,0 +1,37 @@
+<div class="container">
+
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label>Nom Lunette en tapant</label>
+            <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+        </div>
+    </form>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Date Création</th>
+                        <th>Style</th> <!-- Changed from Catégorie to Style -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lunette of lunettes | filter:searchTerm"> <!-- Changed produit to lunette -->
+                        <td>{{ lunette.idLunette }}</td> <!-- Changed idProduit to idLunette -->
+                        <td>{{ lunette.nomLunette }}</td> <!-- Changed nomProduit to nomLunette -->
+                        <td>{{ lunette.prixLunette }}</td> <!-- Changed prixProduit to prixLunette -->
+                        <td>{{ lunette.dateCreation | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ lunette.style?.nomSty }}</td> <!-- Changed catégorie to style -->
+                        <!-- Uncomment and update as needed -->
+                        <!-- <td><a class="btn btn-danger" (click)="supprimerLunette(lunette)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateLunette', lunette.idLunette]">Modifier</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
